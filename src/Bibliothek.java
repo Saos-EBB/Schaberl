@@ -256,6 +256,14 @@ public class Bibliothek {
         quotes.put("Othello", "„Ich bin nicht, was ich bin.“");
         quotes.put("König Lear", "„Nichts wird aus nichts.“");
         quotes.put("Ein Sommernachtstraum", "„Der Liebe Augen sehen nicht mit den Augen.“");
+        //Orwell
+        quotes.put("1984", "„Big Brother is watching you.“");
+        quotes.put("Animal Farm", "„All animals are equal, but some animals are more equal than others.“");
+        quotes.put("Homage to Catalonia", "„The issue involved was the future of humanity.“");
+        quotes.put("Down and Out in Paris and London", "„Poverty frees them from ordinary standards of behaviour.“");
+        quotes.put("The Road to Wigan Pier", "„The working class are not revolting because they are hungry.“");
+
+
         // Poe
         quotes.put("The Raven", "„Quoth the Raven: Nevermore.“");
         quotes.put("The Tell-Tale Heart", "„I heard all things in the heaven and in the earth.“");
