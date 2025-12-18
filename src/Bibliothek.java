@@ -14,7 +14,7 @@ public class Bibliothek {
         String choice = "";
 
         while (!choice.equals("0")) {
-            System.out.println("\n--- BIBLIOTHEK MENU ---\n1 = Autoren auflisten\n2 = Bibliografie ansehen\n3 = Zitat aus Titel anzeigen\n4 = Autor + Bücher hinzufügen\n5 = Autor zu Titel finden\n0 = Exit\n>> ");
+            System.out.println("\n--- BIBLIOTHEK MENU ---\n1 = Autoren auflisten\n2 = Bibliografie ansehen\n3 = Zitat aus Titel anzeigen\n4 =  Autor zu Titel finden \n5 = Autor + Bücher hinzufügen\n0 = Exit\n>> ");
             choice = scan.next();
             switch (choice) {
                 case "1" -> listAutors();
@@ -30,6 +30,47 @@ public class Bibliothek {
 //mainEnte!
 
 
+    // 1.
+    private static void listAutors() {
+        System.out.println(String.join("\n", bib.keySet()));
+    }
+
+    // 2 .
+    private static void wrote() {
+        System.out.println("Die Bibliografie von welchem Autor willst du dir ansehen?");
+        String xxx = scan.next().toUpperCase();
+        if (xxx.equals("0")) {
+            System.out.println("Dann nicht.. ");
+        } else {
+            System.out.println(String.join("\n", bib.get(xxx)));
+        }
+    }
+    // 3.
+    private static void quote() {
+        System.out.println("In welches Buch willst du reinschaun?");
+        scan.nextLine();
+        String title = scan.nextLine();
+        if (!quotes.containsKey(title)) {
+            System.out.println("Kein Zitat für diesen Titel gefunden.");
+            return;
+        }
+        System.out.println(quotes.get(title));
+    }
+    // 4.
+    private static void searchAutor() {
+        System.out.println("Welchen Titel suchst du?");
+        scan.nextLine();
+        String title = scan.nextLine();
+        for (String author : bib.keySet()) {
+            if (bib.get(author).contains(title)) {
+                System.out.println("Autor: " + author);
+                return;
+            }
+        }
+        System.out.println("Kein Autor für diesen Titel gefunden.");
+    }
+
+    // 5.
     private static void addStuff() {
         String xxx = "";
         scan.nextLine(); // Rest nach vorherigem scan.next() entfernen
@@ -55,46 +96,8 @@ public class Bibliothek {
         }
     }
 
-    //alle autoren auflisten
-    private static void listAutors() {
-        System.out.println(String.join("\n", bib.keySet()));
-    }
 
-    //alle titel die ein autor geschrieben hat
-    private static void wrote() {
-        System.out.println("Die Bibliografie von welchem Autor willst du dir ansehen?");
-        String xxx = scan.next().toUpperCase();
-        if (xxx.equals("0")) {
-            System.out.println("Dann nicht.. ");
-        } else {
-            System.out.println(String.join("\n", bib.get(xxx)));
-        }
-    }
-
-    private static void quote() {
-        System.out.println("In welches Buch willst du reinschaun?");
-        scan.nextLine();
-        String title = scan.nextLine();
-        if (!quotes.containsKey(title)) {
-            System.out.println("Kein Zitat für diesen Titel gefunden.");
-            return;
-        }
-        System.out.println(quotes.get(title));
-    }
-
-    private static void searchAutor() {
-        System.out.println("Welchen Titel suchst du?");
-        scan.nextLine();
-        String title = scan.nextLine();
-        for (String author : bib.keySet()) {
-            if (bib.get(author).contains(title)) {
-                System.out.println("Autor: " + author);
-                return;
-            }
-        }
-        System.out.println("Kein Autor für diesen Titel gefunden.");
-    }
-
+    //bissi Overkill mit büchern und zitaten
     private static void preloadAuthors() {
         HashSet<String> hesse = new HashSet<>();
         hesse.add("Der Steppenwolf");
